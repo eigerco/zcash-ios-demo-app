@@ -1,0 +1,518 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C04C6F862B0625C500315F9B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6F852B0625C500315F9B /* ContentView.swift */; };
+		C04C6F882B0625C900315F9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C04C6F872B0625C900315F9B /* Assets.xcassets */; };
+		C04C6F8B2B0625C900315F9B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C04C6F8A2B0625C900315F9B /* Preview Assets.xcassets */; };
+		C04C6F932B06261800315F9B /* ZcashLib in Frameworks */ = {isa = PBXBuildFile; productRef = C04C6F922B06261800315F9B /* ZcashLib */; };
+		C04C6F962B0626E200315F9B /* LightwalletClientLib in Frameworks */ = {isa = PBXBuildFile; productRef = C04C6F952B0626E200315F9B /* LightwalletClientLib */; };
+		C04C6F9C2B06796000315F9B /* Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6F9B2B06796000315F9B /* Sync.swift */; };
+		C04C6F9E2B067B4E00315F9B /* LightWalletClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6F9D2B067B4E00315F9B /* LightWalletClient.swift */; };
+		C04C6FA02B06B0B500315F9B /* StandardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6F9F2B06B0B500315F9B /* StandardButton.swift */; };
+		C04C6FA32B0BF1A700315F9B /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = C04C6FA22B0BF1A700315F9B /* SQLite */; };
+		C04C6FA62B0BF30700315F9B /* Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FA52B0BF30700315F9B /* Init.swift */; };
+		C04C6FA92B0BF6E400315F9B /* Spending.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FA82B0BF6E400315F9B /* Spending.swift */; };
+		C04C6FAB2B0C9B4600315F9B /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FAA2B0C9B4600315F9B /* Main.swift */; };
+		C04C6FAD2B0C9F2C00315F9B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FAC2B0C9F2C00315F9B /* Constants.swift */; };
+		C04C6FAF2B0CBB8E00315F9B /* TxDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FAE2B0CBB8E00315F9B /* TxDetails.swift */; };
+		C04C6FB12B0CBB9700315F9B /* TransparentBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FB02B0CBB9700315F9B /* TransparentBalance.swift */; };
+		C04C6FB32B0CDD0B00315F9B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FB22B0CDD0B00315F9B /* MainView.swift */; };
+		C04C6FB52B0CDDB300315F9B /* Directories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FB42B0CDDB300315F9B /* Directories.swift */; };
+		C04C6FB72B0CDFB300315F9B /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FB62B0CDFB300315F9B /* MenuView.swift */; };
+		C04C6FB92B0CE34B00315F9B /* SpendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FB82B0CE34B00315F9B /* SpendingView.swift */; };
+		C04C6FBB2B0CE35800315F9B /* TxDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FBA2B0CE35800315F9B /* TxDetailsView.swift */; };
+		C04C6FBD2B0CE36200315F9B /* EncodingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FBC2B0CE36200315F9B /* EncodingView.swift */; };
+		C04C6FBF2B0CE3C600315F9B /* TransparentBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FBE2B0CE3C600315F9B /* TransparentBalanceView.swift */; };
+		C04C6FC12B0D0EE100315F9B /* ZcashDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FC02B0D0EE100315F9B /* ZcashDemoApp.swift */; };
+		C04C6FC32B0D0F3400315F9B /* LabelTextRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FC22B0D0F3400315F9B /* LabelTextRow.swift */; };
+		C04C6FC52B0D1E2E00315F9B /* TextCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FC42B0D1E2E00315F9B /* TextCardView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C04C6F802B0625C500315F9B /* ZcashDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZcashDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C04C6F852B0625C500315F9B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C04C6F872B0625C900315F9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C04C6F8A2B0625C900315F9B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C04C6F9B2B06796000315F9B /* Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sync.swift; sourceTree = "<group>"; };
+		C04C6F9D2B067B4E00315F9B /* LightWalletClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightWalletClient.swift; sourceTree = "<group>"; };
+		C04C6F9F2B06B0B500315F9B /* StandardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardButton.swift; sourceTree = "<group>"; };
+		C04C6FA52B0BF30700315F9B /* Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init.swift; sourceTree = "<group>"; };
+		C04C6FA82B0BF6E400315F9B /* Spending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spending.swift; sourceTree = "<group>"; };
+		C04C6FAA2B0C9B4600315F9B /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		C04C6FAC2B0C9F2C00315F9B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C04C6FAE2B0CBB8E00315F9B /* TxDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxDetails.swift; sourceTree = "<group>"; };
+		C04C6FB02B0CBB9700315F9B /* TransparentBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentBalance.swift; sourceTree = "<group>"; };
+		C04C6FB22B0CDD0B00315F9B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		C04C6FB42B0CDDB300315F9B /* Directories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Directories.swift; sourceTree = "<group>"; };
+		C04C6FB62B0CDFB300315F9B /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		C04C6FB82B0CE34B00315F9B /* SpendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingView.swift; sourceTree = "<group>"; };
+		C04C6FBA2B0CE35800315F9B /* TxDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxDetailsView.swift; sourceTree = "<group>"; };
+		C04C6FBC2B0CE36200315F9B /* EncodingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodingView.swift; sourceTree = "<group>"; };
+		C04C6FBE2B0CE3C600315F9B /* TransparentBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentBalanceView.swift; sourceTree = "<group>"; };
+		C04C6FC02B0D0EE100315F9B /* ZcashDemoApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZcashDemoApp.swift; sourceTree = "<group>"; };
+		C04C6FC22B0D0F3400315F9B /* LabelTextRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTextRow.swift; sourceTree = "<group>"; };
+		C04C6FC42B0D1E2E00315F9B /* TextCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCardView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C04C6F7D2B0625C500315F9B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C04C6FA32B0BF1A700315F9B /* SQLite in Frameworks */,
+				C04C6F932B06261800315F9B /* ZcashLib in Frameworks */,
+				C04C6F962B0626E200315F9B /* LightwalletClientLib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C04C6F772B0625C500315F9B = {
+			isa = PBXGroup;
+			children = (
+				C04C6F822B0625C500315F9B /* ZcashDemoApp */,
+				C04C6F812B0625C500315F9B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C04C6F812B0625C500315F9B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C04C6F802B0625C500315F9B /* ZcashDemoApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C04C6F822B0625C500315F9B /* ZcashDemoApp */ = {
+			isa = PBXGroup;
+			children = (
+				C04C6FA72B0BF6D700315F9B /* Operations */,
+				C04C6FA42B0BF2F700315F9B /* Data */,
+				C04C6F9A2B06793400315F9B /* Utils */,
+				C04C6F992B06792900315F9B /* UIComponents */,
+				C04C6FC02B0D0EE100315F9B /* ZcashDemoApp.swift */,
+				C04C6F852B0625C500315F9B /* ContentView.swift */,
+				C04C6F872B0625C900315F9B /* Assets.xcassets */,
+				C04C6F892B0625C900315F9B /* Preview Content */,
+				C04C6FB22B0CDD0B00315F9B /* MainView.swift */,
+				C04C6FB82B0CE34B00315F9B /* SpendingView.swift */,
+				C04C6FB62B0CDFB300315F9B /* MenuView.swift */,
+				C04C6FBA2B0CE35800315F9B /* TxDetailsView.swift */,
+				C04C6FBC2B0CE36200315F9B /* EncodingView.swift */,
+				C04C6FBE2B0CE3C600315F9B /* TransparentBalanceView.swift */,
+			);
+			path = ZcashDemoApp;
+			sourceTree = "<group>";
+		};
+		C04C6F892B0625C900315F9B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C04C6F8A2B0625C900315F9B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C04C6F992B06792900315F9B /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				C04C6FC42B0D1E2E00315F9B /* TextCardView.swift */,
+				C04C6F9F2B06B0B500315F9B /* StandardButton.swift */,
+				C04C6FC22B0D0F3400315F9B /* LabelTextRow.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		C04C6F9A2B06793400315F9B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C04C6F9B2B06796000315F9B /* Sync.swift */,
+				C04C6F9D2B067B4E00315F9B /* LightWalletClient.swift */,
+				C04C6FAC2B0C9F2C00315F9B /* Constants.swift */,
+				C04C6FB42B0CDDB300315F9B /* Directories.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C04C6FA42B0BF2F700315F9B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C04C6FA52B0BF30700315F9B /* Init.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		C04C6FA72B0BF6D700315F9B /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				C04C6FA82B0BF6E400315F9B /* Spending.swift */,
+				C04C6FAA2B0C9B4600315F9B /* Main.swift */,
+				C04C6FAE2B0CBB8E00315F9B /* TxDetails.swift */,
+				C04C6FB02B0CBB9700315F9B /* TransparentBalance.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C04C6F7F2B0625C500315F9B /* ZcashDemoApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C04C6F8E2B0625C900315F9B /* Build configuration list for PBXNativeTarget "ZcashDemoApp" */;
+			buildPhases = (
+				C04C6F7C2B0625C500315F9B /* Sources */,
+				C04C6F7D2B0625C500315F9B /* Frameworks */,
+				C04C6F7E2B0625C500315F9B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZcashDemoApp;
+			packageProductDependencies = (
+				C04C6F922B06261800315F9B /* ZcashLib */,
+				C04C6F952B0626E200315F9B /* LightwalletClientLib */,
+				C04C6FA22B0BF1A700315F9B /* SQLite */,
+			);
+			productName = ZcashDemoApp;
+			productReference = C04C6F802B0625C500315F9B /* ZcashDemoApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C04C6F782B0625C500315F9B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					C04C6F7F2B0625C500315F9B = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+				};
+			};
+			buildConfigurationList = C04C6F7B2B0625C500315F9B /* Build configuration list for PBXProject "ZcashDemoApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C04C6F772B0625C500315F9B;
+			packageReferences = (
+				C04C6F912B06261800315F9B /* XCRemoteSwiftPackageReference "uniffi-ios-pkg" */,
+				C04C6F942B0626E200315F9B /* XCLocalSwiftPackageReference "ZcashDemoApp/LightwalletClientLib" */,
+				C04C6FA12B0BF1A700315F9B /* XCRemoteSwiftPackageReference "SQLite" */,
+			);
+			productRefGroup = C04C6F812B0625C500315F9B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C04C6F7F2B0625C500315F9B /* ZcashDemoApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C04C6F7E2B0625C500315F9B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C04C6F8B2B0625C900315F9B /* Preview Assets.xcassets in Resources */,
+				C04C6F882B0625C900315F9B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C04C6F7C2B0625C500315F9B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C04C6FB92B0CE34B00315F9B /* SpendingView.swift in Sources */,
+				C04C6FAB2B0C9B4600315F9B /* Main.swift in Sources */,
+				C04C6FB32B0CDD0B00315F9B /* MainView.swift in Sources */,
+				C04C6FBD2B0CE36200315F9B /* EncodingView.swift in Sources */,
+				C04C6FC12B0D0EE100315F9B /* ZcashDemoApp.swift in Sources */,
+				C04C6F862B0625C500315F9B /* ContentView.swift in Sources */,
+				C04C6FA92B0BF6E400315F9B /* Spending.swift in Sources */,
+				C04C6FBF2B0CE3C600315F9B /* TransparentBalanceView.swift in Sources */,
+				C04C6FAF2B0CBB8E00315F9B /* TxDetails.swift in Sources */,
+				C04C6FA62B0BF30700315F9B /* Init.swift in Sources */,
+				C04C6FB52B0CDDB300315F9B /* Directories.swift in Sources */,
+				C04C6FAD2B0C9F2C00315F9B /* Constants.swift in Sources */,
+				C04C6FA02B06B0B500315F9B /* StandardButton.swift in Sources */,
+				C04C6FC32B0D0F3400315F9B /* LabelTextRow.swift in Sources */,
+				C04C6FBB2B0CE35800315F9B /* TxDetailsView.swift in Sources */,
+				C04C6FC52B0D1E2E00315F9B /* TextCardView.swift in Sources */,
+				C04C6FB72B0CDFB300315F9B /* MenuView.swift in Sources */,
+				C04C6F9C2B06796000315F9B /* Sync.swift in Sources */,
+				C04C6F9E2B067B4E00315F9B /* LightWalletClient.swift in Sources */,
+				C04C6FB12B0CBB9700315F9B /* TransparentBalance.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C04C6F8C2B0625C900315F9B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C04C6F8D2B0625C900315F9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C04C6F8F2B0625C900315F9B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ZcashDemoApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = z.cash.ZcashDemoApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C04C6F902B0625C900315F9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ZcashDemoApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = z.cash.ZcashDemoApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C04C6F7B2B0625C500315F9B /* Build configuration list for PBXProject "ZcashDemoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C04C6F8C2B0625C900315F9B /* Debug */,
+				C04C6F8D2B0625C900315F9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C04C6F8E2B0625C900315F9B /* Build configuration list for PBXNativeTarget "ZcashDemoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C04C6F8F2B0625C900315F9B /* Debug */,
+				C04C6F902B0625C900315F9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		C04C6F942B0626E200315F9B /* XCLocalSwiftPackageReference "ZcashDemoApp/LightwalletClientLib" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ZcashDemoApp/LightwalletClientLib;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C04C6F912B06261800315F9B /* XCRemoteSwiftPackageReference "uniffi-ios-pkg" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/eigerco/uniffi-ios-pkg";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		C04C6FA12B0BF1A700315F9B /* XCRemoteSwiftPackageReference "SQLite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C04C6F922B06261800315F9B /* ZcashLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C04C6F912B06261800315F9B /* XCRemoteSwiftPackageReference "uniffi-ios-pkg" */;
+			productName = ZcashLib;
+		};
+		C04C6F952B0626E200315F9B /* LightwalletClientLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LightwalletClientLib;
+		};
+		C04C6FA22B0BF1A700315F9B /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C04C6FA12B0BF1A700315F9B /* XCRemoteSwiftPackageReference "SQLite" */;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = C04C6F782B0625C500315F9B /* Project object */;
+}
