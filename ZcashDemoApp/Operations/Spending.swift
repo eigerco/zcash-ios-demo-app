@@ -78,8 +78,8 @@ class Spending {
         var txId: ZcashTxId {
             switch Constants.PARAMS {
             case ZcashConsensusParameters.testNetwork:
-                let inputSelector = ZcashTestGreedyInputSelector(changeStrategy: fixedChangeStrategy, dustOutputPolicy: zdop)
-                return try! spendTest(
+                let inputSelector = ZcashTestFixedGreedyInputSelector(changeStrategy: fixedChangeStrategy, dustOutputPolicy: zdop)
+                return try! spendTestFixed(
                     zDbData: walletDb,
                     params: Constants.PARAMS,
                     prover: prover,
@@ -91,8 +91,8 @@ class Spending {
                 )
 
             case ZcashConsensusParameters.mainNetwork:
-                let inputSelector = ZcashMainGreedyInputSelector(changeStrategy: fixedChangeStrategy, dustOutputPolicy: zdop)
-                return try! spendMain(
+                let inputSelector = ZcashMainFixedGreedyInputSelector(changeStrategy: fixedChangeStrategy, dustOutputPolicy: zdop)
+                return try! spendMainFixed(
                     zDbData: walletDb,
                     params: Constants.PARAMS,
                     prover: prover,

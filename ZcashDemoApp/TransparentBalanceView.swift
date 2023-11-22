@@ -1,20 +1,17 @@
 import SwiftUI
 
 struct TransparentBalanceView: View {
+    @State var address = ""
+    @State var balance: UInt64 = 0
+    @State var isValid: Bool = false
+    
     var body: some View {
         VStack {
-            @State var address = ""
-            @State var balance: UInt64 = 0
-            @State var isValid: Bool = false
             
-            TextField(
-                "Transparent address",
-                value: $address,
-                formatter: <#T##Formatter#>
-            ).onChange(of: address) {
-                isValid = TransparentBalance.isValidTransparentAddress(address: address)
-            }
-            
+            TextField("Transparent address", text: $address)
+                .onChange(of: address) {
+                    isValid = TransparentBalance.isValidTransparentAddress(address: address)
+                }
 
             if (!isValid) {
                 Text("The address given is invalid").foregroundStyle(.red)

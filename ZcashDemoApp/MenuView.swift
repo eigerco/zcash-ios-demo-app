@@ -2,31 +2,31 @@ import SwiftUI
 
 struct MenuView: View {
     var body: some View {
-        VStack {
-            NavigationLink {
-                SpendingView()
-            } label: {
+        List {
+            NavigationLink(destination: SpendingView()) {
                 Text("Spend a note")
             }
+            .buttonStyle(.bordered)
+            .padding()
 
-            NavigationLink {
-                TxDetailsView()
-            } label: {
+            NavigationLink(destination: TxDetailsView()) {
                 Text("Explore transaction")
             }
+            .buttonStyle(.bordered)
+            .padding()
 
-            NavigationLink {
-                EncodingView()
-            } label: {
+            NavigationLink(destination: EncodingView()) {
                 Text("Decode Unified Address")
             }
+            .buttonStyle(.bordered)
+            .padding()
 
-            NavigationLink {
-                TransparentBalanceView()
-            } label: {
+            NavigationLink(destination: TransparentBalanceView()) {
                 Text("Get transparent balance")
             }
-        }
+            .buttonStyle(.bordered)
+            .padding()
+        }.listStyle(PlainListStyle())
     }
 }
 
