@@ -1,7 +1,7 @@
 import Foundation
 import ZcashLib
 
-class TxDetails {
+enum TxDetails {
     /**
      * To extract information from a shielded transaction we need the viewing keys in the database,
      * otherwise we would need only the txHash information.
@@ -29,7 +29,7 @@ class TxDetails {
 
                 sb.appendLine("transparent vout - recipient address", recAddress)
                 sb.appendNumber("transparent vout - amount spent", UInt64(amountSpent))
-                sb.appendLine("transparent vout - script pub key", try String(cString: pubKey.toBytes()))
+                try sb.appendLine("transparent vout - script pub key", String(cString: pubKey.toBytes()))
             }
         }
 

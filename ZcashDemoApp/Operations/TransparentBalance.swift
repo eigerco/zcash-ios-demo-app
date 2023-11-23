@@ -9,8 +9,7 @@ enum AddressType {
     case invalid
 }
 
-class TransparentBalance {
-
+enum TransparentBalance {
     static func isValidTransparentAddress(address: String) -> Bool {
         getAddressType(addr: address) == AddressType.transparent
     }
@@ -28,7 +27,7 @@ class TransparentBalance {
      * to solve the issue with the boundaries that UniFFI impose,
      * so we had to work around this. Maybe a good issue for a PR!
      */
-    static private func getAddressType(addr: String) -> AddressType {
+    private static func getAddressType(addr: String) -> AddressType {
         let transparentAddress = try? ZcashTransparentAddress.decode(params: Constants.PARAMS, input: addr)
 
         let saplingAddress = try? ZcashPaymentAddress.decode(params: Constants.PARAMS, input: addr)

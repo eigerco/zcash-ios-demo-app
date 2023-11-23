@@ -10,23 +10,23 @@ struct MainView: View {
     // reinitialize the wallet
     let blocksDirRoot: URL
     let text: String
-    
+
     @State private var showingAlert = false
-    
+
     init() {
-        self.dbPath = try! Directories.dataDbURLHelper()
-        self.walletDb = try! ZcashWalletDb.forPath(path: dbPath.absoluteString, params: Constants.PARAMS)
-        self.blocksDirRoot = dbPath.deletingLastPathComponent()
-        self.text = getWalletSummary(walletDb: walletDb)
+        dbPath = try! Directories.dataDbURLHelper()
+        walletDb = try! ZcashWalletDb.forPath(path: dbPath.absoluteString, params: Constants.PARAMS)
+        blocksDirRoot = dbPath.deletingLastPathComponent()
+        text = getWalletSummary(walletDb: walletDb)
     }
-    
+
     var body: some View {
         VStack(alignment: .center) {
             TextCardView(title: "Transaction details", text: text)
-            
+
             AsyncButton(label: "Reset database") {
-                // await Main.resetWalletDb(walletDb: walletDb)
-                // Main.initBlocksDb(blocksDirRoot)
+                try await Main.resetWalletDb(walletDb: walletDb)
+                Main.initBlocksDb(blocksDirRoot)
                 showingAlert = true
             }
             .alert("Database reset!", isPresented: $showingAlert) {}
@@ -36,7 +36,7 @@ struct MainView: View {
                 try! await Sync.downloadBlocks(walletDbPath: dbPath.absoluteString, blocksDirRoot: blocksDirRoot.absoluteString)
                 showingAlert = true
             }.alert("Blocks downloaded!", isPresented: $showingAlert) {}
-            .padding()
+                .padding()
 
             NavigationLink(destination: MenuView()) {
                 Text("Go to menu")
@@ -47,7 +47,7 @@ struct MainView: View {
     }
 }
 
-internal func getWalletSummary(walletDb: ZcashWalletDb) -> String {
+func getWalletSummary(walletDb: ZcashWalletDb) -> String {
     do {
         return try Main.getWalletSummary(walletDb: walletDb)
     } catch {
