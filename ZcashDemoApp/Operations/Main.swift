@@ -1,34 +1,17 @@
-
+import Foundation
 import Logging
 import ZcashLib
+import SQLite3
 
-// Simulates StringBuilder from kotlin
-public extension String {
-    mutating func appendLine(_ value: String) {
-        append(String(format: "%@\n", value))
-    }
-
-    mutating func appendLine(_ key: String, _ value: String) {
-        append(String(format: "%@:%@\n", key, value))
-    }
-
-    mutating func appendNumber(_ key: String, _ value: UInt32) {
-        append(String(format: "%@: %@\n", key, value))
-    }
-
-    mutating func appendNumber(_ key: String, _ value: UInt64) {
-        append(String(format: "%@: %@\n", key, value))
-    }
-
-    mutating func appendNumber(_ key: String, _ value: Int) {
-        append(String(format: "%@: %@\n", key, value))
-    }
-}
-
-enum Main {
+class Main {
     // Resets and initializes the wallet database
-    static func resetWalletDb(walletDb: ZcashWalletDb) async throws {
-        // TODO: destroy db
+    static func resetWalletDb() async throws {
+        let dbPath = try! Directories.dataDbURLHelper()
+        let walletDb = try! ZcashWalletDb.forPath(path: dbPath.path, params: Constants.PARAMS)
+        
+        if FileManager.default.fileExists(atPath: dbPath.path) {
+            try! FileManager.default.removeItem(at: dbPath)
+        }
 
         try! walletDb.initialize(seed: Constants.SEED)
 
@@ -36,9 +19,46 @@ enum Main {
 
         _ = try! walletDb.createAccount(seed: Constants.SEED, birthday: birthday)
     }
+    
+    private static func createSQLiteFile(blocksDbPath: URL) {
+        var db:OpaquePointer? = nil
+        
+        if sqlite3_open(blocksDbPath.path, &db) != SQLITE_OK {
+            print("error opening database, code: " + String(sqlite3_open(blocksDbPath.path, &db)))
+        } else {
+            print("SUCCESS opening database")
+        }
+    }
 
-    static func resetBlocksDb(_ blocksDir: String) {
-        try! ZcashFsBlockDb.forPath(fsblockdbRoot: blocksDir).initialize(blocksDir: blocksDir)
+    static func listContents(of url: URL) throws {
+        let fileManager = FileManager.default
+        
+        do {
+            let conts = try fileManager.contentsOfDirectory(
+                at: url,
+                includingPropertiesForKeys: [.nameKey, .isDirectoryKey],
+                options: [.skipsHiddenFiles]
+            )
+            conts.forEach {x in
+                print(x.path)
+            }
+        } catch {
+            print("can't see the dir")
+        }
+    }
+    
+    static func resetBlocksDb() {
+        let dbPath = try! Directories.dataDbURLHelper()
+        let blocksDirRoot = dbPath.deletingLastPathComponent()
+        
+        let blocksDirectory: URL = blocksDirRoot.appendingPathComponent("blocks", isDirectory: true)
+        if FileManager.default.fileExists(atPath: blocksDirectory.path) {
+            try! FileManager.default.removeItem(atPath: blocksDirectory.path)
+        }
+        
+        let blocksDb = try! ZcashFsBlockDb.forPath(fsblockdbRoot: blocksDirRoot.path)
+        
+        try! blocksDb.initialize(blocksDir: blocksDirRoot.path)
     }
 
     private static func getUpdatedAccountBirthday() async throws -> ZcashAccountBirthday {
@@ -57,7 +77,10 @@ enum Main {
         case DbNotAvailable
     }
 
-    static func getWalletSummary(walletDb: ZcashWalletDb) throws -> String {
+    static func getWalletSummary() throws -> String {
+        let dbPath = try! Directories.dataDbURLHelper()
+        let walletDb = try! ZcashWalletDb.forPath(path: dbPath.path, params: Constants.PARAMS)
+        
         let chainTipHeight: UInt32
         let fullyScannedHeight: UInt32
         let isWalletSynced: Bool
@@ -81,7 +104,7 @@ enum Main {
         let walletBirthdayHeight = try walletDb.getWalletBirthday()!.value()
         let spendableNotes = try walletDb.selectSpendableSaplingNotes(account: Constants.ACCOUNT_ID, targetValue: amountDefiningSpendable, anchorHeight: anchorHeight, exclude: [])
 
-        let logger = Logger(label: "info")
+        let logger = Logger(label: "wallet summary")
         logger.log(level: .info, "Transparent address: \(transparentAddress)")
         logger.log(level: .info, "Sapling address: \(saplingAddress)")
 

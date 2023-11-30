@@ -3,6 +3,7 @@ import ZcashLib
 
 struct SpendingView: View {
     @State var showingAlert = false
+    @State var showingSubmissionAlert = false
     @State var transactionCreated = false
     @State var amountToSend: UInt64 = 0
     let dbPath: URL
@@ -11,7 +12,7 @@ struct SpendingView: View {
 
     init() {
         dbPath = try! Directories.dataDbURLHelper()
-        walletDb = try! ZcashWalletDb.forPath(path: dbPath.absoluteString, params: Constants.PARAMS)
+        walletDb = try! ZcashWalletDb.forPath(path: dbPath.path, params: Constants.PARAMS)
         spendableAmount = getSpendableAmount(walletDb: walletDb)
     }
 
@@ -32,8 +33,10 @@ struct SpendingView: View {
             StandardButton(label: "Create Transaction") {
                 if spendableAmount > 0 {
                     transactionCreated = createTransaction(walletDb: walletDb, amountToSend: amountToSend)
+                    showingAlert = true
                 } else {
                     transactionCreated = false
+                    showingAlert = true
                 }
             }.alert("Notification", isPresented: $showingAlert) {} message: {
                 if spendableAmount < amountToSend {
@@ -42,9 +45,12 @@ struct SpendingView: View {
                     Text("Transaction created: \(String(transactionCreated))")
                 }
             }.padding()
-            StandardButton(label: "Submit Transaction") {
-                Spending.submitTransaction()
-            }.padding()
+            AsyncButton(label: "Submit Transaction") {
+                await Spending.submitTransaction()
+                showingSubmissionAlert = true
+            }
+            .alert("Transaction submitted", isPresented: $showingSubmissionAlert) {}
+            .padding()
         }
     }
 }
@@ -63,7 +69,7 @@ private func getSpendableAmount(walletDb: ZcashWalletDb) -> UInt64 {
 private func createTransaction(walletDb: ZcashWalletDb, amountToSend: UInt64) -> Bool {
     if amountToSend > 0 {
         let txRequest = Spending.makeTransactionRequest(memoBytes: [], addressTo: Constants.RECIPIENT_ADDRESS, amount: Int64(amountToSend))
-        let txid = Spending.createTransaction(walletDb: walletDb, request: txRequest)
+        let _ = Spending.createTransaction(walletDb: walletDb, request: txRequest)
         return true
     } else {
         return false

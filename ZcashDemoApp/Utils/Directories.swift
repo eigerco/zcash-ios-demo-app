@@ -17,7 +17,8 @@ enum Directories {
     static func dataDbURLHelper() throws -> URL {
         try documentsDirectoryHelper().appendingPathComponent(walletDbName, isDirectory: false)
     }
-
+    
+    // need to upload them to the device manually
     static func spendParamsURLHelper() throws -> URL {
         try documentsDirectoryHelper().appendingPathComponent("sapling-spend.params")
     }

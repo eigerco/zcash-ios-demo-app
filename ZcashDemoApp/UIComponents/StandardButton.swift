@@ -22,12 +22,12 @@ struct StandardButton: View {
 }
 
 struct AsyncButton: View {
-    var action: () async -> Void
+    var action: () async throws  -> Void
     var label: String
 
     var body: some View {
         Button(action: {
-            Task { await action() }
+            Task { try await action() }
         }) {
             Text(label)
         }
@@ -35,7 +35,7 @@ struct AsyncButton: View {
         .controlSize(.large)
     }
 
-    init(label: String, action: @escaping () async -> Void) {
+    init(label: String, action: @escaping () async throws -> Void) {
         self.action = action
         self.label = label
     }

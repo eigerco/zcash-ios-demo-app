@@ -9,14 +9,14 @@ struct EncodingView: View {
     @State private var uaAddress = ""
     @State private var tAddress = ""
     @State private var sAddress = ""
-    @State private var oAddress = ""
+//    @State private var oAddress = ""
 
     let dbPath: URL
     let walletDb: ZcashWalletDb
 
     init() {
         dbPath = try! Directories.dataDbURLHelper()
-        walletDb = try! ZcashWalletDb.forPath(path: dbPath.absoluteString, params: Constants.PARAMS)
+        walletDb = try! ZcashWalletDb.forPath(path: dbPath.path, params: Constants.PARAMS)
     }
 
     var body: some View {
@@ -37,7 +37,7 @@ struct EncodingView: View {
                 let ua = parseUnifiedAddress(address: uaAddress)
                 tAddress = getTransparentAddress(ua: ua)
                 sAddress = getSaplingAddress(ua: ua)
-                oAddress = getOrchardAddress(ua: ua)
+//                oAddress = getOrchardAddress(ua: ua)
             }.padding()
 
             List {
@@ -49,10 +49,10 @@ struct EncodingView: View {
                     label: "Sapling address",
                     text: sAddress
                 ).padding()
-                LabelTextRow(
-                    label: "Orchard address",
-                    text: oAddress
-                ).padding()
+//                LabelTextRow(
+//                    label: "Orchard address",
+//                    text: oAddress
+//                ).padding()
             }
         }
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C04510BE2B14F1D00007DFEA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04510BD2B14F1D00007DFEA /* Extensions.swift */; };
 		C04C6F862B0625C500315F9B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6F852B0625C500315F9B /* ContentView.swift */; };
 		C04C6F882B0625C900315F9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C04C6F872B0625C900315F9B /* Assets.xcassets */; };
 		C04C6F8B2B0625C900315F9B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C04C6F8A2B0625C900315F9B /* Preview Assets.xcassets */; };
@@ -16,7 +17,6 @@
 		C04C6F9E2B067B4E00315F9B /* LightWalletClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6F9D2B067B4E00315F9B /* LightWalletClient.swift */; };
 		C04C6FA02B06B0B500315F9B /* StandardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6F9F2B06B0B500315F9B /* StandardButton.swift */; };
 		C04C6FA32B0BF1A700315F9B /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = C04C6FA22B0BF1A700315F9B /* SQLite */; };
-		C04C6FA62B0BF30700315F9B /* Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FA52B0BF30700315F9B /* Init.swift */; };
 		C04C6FA92B0BF6E400315F9B /* Spending.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FA82B0BF6E400315F9B /* Spending.swift */; };
 		C04C6FAB2B0C9B4600315F9B /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FAA2B0C9B4600315F9B /* Main.swift */; };
 		C04C6FAD2B0C9F2C00315F9B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FAC2B0C9F2C00315F9B /* Constants.swift */; };
@@ -32,9 +32,11 @@
 		C04C6FC12B0D0EE100315F9B /* ZcashDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FC02B0D0EE100315F9B /* ZcashDemoApp.swift */; };
 		C04C6FC32B0D0F3400315F9B /* LabelTextRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FC22B0D0F3400315F9B /* LabelTextRow.swift */; };
 		C04C6FC52B0D1E2E00315F9B /* TextCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FC42B0D1E2E00315F9B /* TextCardView.swift */; };
+		C04C6FC72B0F5F1000315F9B /* BlocksRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C6FC62B0F5F1000315F9B /* BlocksRepo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C04510BD2B14F1D00007DFEA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C04C6F802B0625C500315F9B /* ZcashDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZcashDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04C6F852B0625C500315F9B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C04C6F872B0625C900315F9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,7 +44,6 @@
 		C04C6F9B2B06796000315F9B /* Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sync.swift; sourceTree = "<group>"; };
 		C04C6F9D2B067B4E00315F9B /* LightWalletClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightWalletClient.swift; sourceTree = "<group>"; };
 		C04C6F9F2B06B0B500315F9B /* StandardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardButton.swift; sourceTree = "<group>"; };
-		C04C6FA52B0BF30700315F9B /* Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init.swift; sourceTree = "<group>"; };
 		C04C6FA82B0BF6E400315F9B /* Spending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spending.swift; sourceTree = "<group>"; };
 		C04C6FAA2B0C9B4600315F9B /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		C04C6FAC2B0C9F2C00315F9B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -58,6 +59,7 @@
 		C04C6FC02B0D0EE100315F9B /* ZcashDemoApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZcashDemoApp.swift; sourceTree = "<group>"; };
 		C04C6FC22B0D0F3400315F9B /* LabelTextRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTextRow.swift; sourceTree = "<group>"; };
 		C04C6FC42B0D1E2E00315F9B /* TextCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCardView.swift; sourceTree = "<group>"; };
+		C04C6FC62B0F5F1000315F9B /* BlocksRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocksRepo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +96,6 @@
 			isa = PBXGroup;
 			children = (
 				C04C6FA72B0BF6D700315F9B /* Operations */,
-				C04C6FA42B0BF2F700315F9B /* Data */,
 				C04C6F9A2B06793400315F9B /* Utils */,
 				C04C6F992B06792900315F9B /* UIComponents */,
 				C04C6FC02B0D0EE100315F9B /* ZcashDemoApp.swift */,
@@ -136,16 +137,10 @@
 				C04C6F9D2B067B4E00315F9B /* LightWalletClient.swift */,
 				C04C6FAC2B0C9F2C00315F9B /* Constants.swift */,
 				C04C6FB42B0CDDB300315F9B /* Directories.swift */,
+				C04C6FC62B0F5F1000315F9B /* BlocksRepo.swift */,
+				C04510BD2B14F1D00007DFEA /* Extensions.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		C04C6FA42B0BF2F700315F9B /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				C04C6FA52B0BF30700315F9B /* Init.swift */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 		C04C6FA72B0BF6D700315F9B /* Operations */ = {
@@ -248,10 +243,11 @@
 				C04C6FA92B0BF6E400315F9B /* Spending.swift in Sources */,
 				C04C6FBF2B0CE3C600315F9B /* TransparentBalanceView.swift in Sources */,
 				C04C6FAF2B0CBB8E00315F9B /* TxDetails.swift in Sources */,
-				C04C6FA62B0BF30700315F9B /* Init.swift in Sources */,
 				C04C6FB52B0CDDB300315F9B /* Directories.swift in Sources */,
 				C04C6FAD2B0C9F2C00315F9B /* Constants.swift in Sources */,
+				C04C6FC72B0F5F1000315F9B /* BlocksRepo.swift in Sources */,
 				C04C6FA02B06B0B500315F9B /* StandardButton.swift in Sources */,
+				C04510BE2B14F1D00007DFEA /* Extensions.swift in Sources */,
 				C04C6FC32B0D0F3400315F9B /* LabelTextRow.swift in Sources */,
 				C04C6FBB2B0CE35800315F9B /* TxDetailsView.swift in Sources */,
 				C04C6FC52B0D1E2E00315F9B /* TextCardView.swift in Sources */,

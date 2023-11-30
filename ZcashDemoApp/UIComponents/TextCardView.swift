@@ -7,14 +7,12 @@ struct TextCardView: View {
     var body: some View {
         GeometryReader { proxy in
             Spacer()
-            Text(title).font(.system(.title, design: .rounded))
-
+            Text(title).font(.system(.title, design: .rounded)).padding()
             ScrollView {
                 Text(text)
-                    .multilineTextAlignment(.center)
+                    .multilineTextAlignment(.trailing)
                     .frame(minHeight: proxy.size.height)
-            }
-
+            }.padding(.top, 50)
             Spacer()
         }.padding()
     }

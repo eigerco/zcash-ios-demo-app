@@ -4,19 +4,17 @@ import ZcashLib
 class Spending {
     private let client = LightWalletClient()
 
-    static let LAST_TX_ID_LABEL = "some key"
+    static func submitTransaction() async {
+        let txIdByteArray = UserDefaults.standard.array(forKey: Constants.LAST_TX_ID_LABEL) as! [UInt8]
 
-    static func submitTransaction() {
-//        let txIdByteArray = UserDefaults.standard.array(forKey: LAST_TX_ID_LABEL) as! [UInt8]
+        let parsedTxId = try! ZcashTxId.fromBytes(data: txIdByteArray)
+        let dbPath = try! Directories.dataDbURLHelper().path()
+        let walletDb = try! ZcashWalletDb.forPath(path: dbPath, params: Constants.PARAMS)
+        let tx = try! walletDb.getTransaction(txid: parsedTxId)
+        let txData = Data(try! tx.toBytes())
+        print("submitting with Hash " + txData.hexEncodedString())
 
-//        val byteArray = FirstClassByteArray(txIdByteArray)
-
-//        let parsedTxId = try! ZcashTxId.fromBytes(data: txIdByteArray)
-//        let dbPath = try! Directories.dataDbURLHelper().path()
-//        let walletDb = try! ZcashWalletDb.forPath(path: dbPath, params: Constants.PARAMS)
-
-//        let encodedTransaction = walletDb.findEncodedTransactionByTxId(txIdByteArray)
-//        client.submitTransaction(data: encodedTransaction!!.raw)
+        try! await LightWalletClient().submitTransaction(data: txData)
     }
 
     static func makeTransactionRequest(
@@ -114,6 +112,6 @@ class Spending {
     }
 
     private static func saveTransactionId(txId: ZcashTxId) {
-        UserDefaults.standard.set(try! txId.toBytes(), forKey: LAST_TX_ID_LABEL)
+        UserDefaults.standard.set(try! txId.toBytes(), forKey: Constants.LAST_TX_ID_LABEL)
     }
 }

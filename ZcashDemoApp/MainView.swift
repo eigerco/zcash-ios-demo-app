@@ -2,41 +2,41 @@ import SwiftUI
 import ZcashLib
 
 struct MainView: View {
-    let dbPath: URL
-    // The Databases are created here, because to create the connection
-    // we need the path of the files, and to get those we need the context to be visible.
-    // The context in Android is available only under Activities.
-    let walletDb: ZcashWalletDb
-    // reinitialize the wallet
-    let blocksDirRoot: URL
-    let text: String
-
-    @State private var showingAlert = false
-
-    init() {
-        dbPath = try! Directories.dataDbURLHelper()
-        walletDb = try! ZcashWalletDb.forPath(path: dbPath.absoluteString, params: Constants.PARAMS)
-        blocksDirRoot = dbPath.deletingLastPathComponent()
-        text = getWalletSummary(walletDb: walletDb)
-    }
+    @State private var showingAlert1 = false
+    @State private var showingAlert2 = false
+    @State private var showingAlert3 = false
+    @State private var text = getWalletSummary()
 
     var body: some View {
         VStack(alignment: .center) {
             TextCardView(title: "Transaction details", text: text)
 
-            AsyncButton(label: "Reset database") {
-                try await Main.resetWalletDb(walletDb: walletDb)
-                Main.initBlocksDb(blocksDirRoot)
-                showingAlert = true
+            AsyncButton(label: "Reset wallet database") {
+                try await Main.resetWalletDb()
+                showingAlert1 = true
             }
-            .alert("Database reset!", isPresented: $showingAlert) {}
+            .alert("Wallet DB reset!", isPresented: $showingAlert1) {}
             .padding()
-
+            
+            StandardButton(label: "Reset blocks database") {
+                Main.resetBlocksDb()
+                showingAlert2 = true
+            }
+            .alert("Blocks DB reset!", isPresented: $showingAlert2) {}
+            .padding()
+            
             AsyncButton(label: "Download blocks") {
-                try! await Sync.downloadBlocks(walletDbPath: dbPath.absoluteString, blocksDirRoot: blocksDirRoot.absoluteString)
-                showingAlert = true
-            }.alert("Blocks downloaded!", isPresented: $showingAlert) {}
-                .padding()
+                try! await Sync.downloadBlocks()
+                showingAlert3 = true
+            }
+            // the alert above is shown??
+            .alert("Blocks downloaded!", isPresented: $showingAlert3) {}
+            .padding()
+            
+            StandardButton(label: "Update from DB") {
+                text = getWalletSummary()
+            }
+            .padding()
 
             NavigationLink(destination: MenuView()) {
                 Text("Go to menu")
@@ -47,9 +47,9 @@ struct MainView: View {
     }
 }
 
-func getWalletSummary(walletDb: ZcashWalletDb) -> String {
+func getWalletSummary() -> String {
     do {
-        return try Main.getWalletSummary(walletDb: walletDb)
+        return try Main.getWalletSummary()
     } catch {
         return "DB not initialized"
     }

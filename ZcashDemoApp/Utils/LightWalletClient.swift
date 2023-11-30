@@ -35,10 +35,9 @@ class LightWalletClient {
         }
     }
 
-    func getTransaction(txId: Data) async throws -> RawTransaction {
+    func getTransaction(txHash: Data) async throws -> RawTransaction {
         try await client.getTransaction(TxFilter.with {
-            $0.index = 0
-            $0.hash = txId
+            $0.hash = txHash
         })
     }
 
@@ -64,9 +63,41 @@ class LightWalletClient {
         }
     }
 
-    func submitTransaction(data: Data) async throws -> SendResponse {
-        try await client.sendTransaction(RawTransaction.with {
+    func submitTransaction(data: Data) async throws {
+        let response = try! await client.sendTransaction(RawTransaction.with {
             $0.data = data
-        })
+        }, callOptions: nil)
+        
+        print("Sending transaction ...")
+        print("Error code: " + String(response.errorCode))
+        print("Error message: " + String(response.errorMessage))
+        
     }
+    
+    func updateSaplingRoots(walletDb: ZcashWalletDb) async throws {
+        let request =
+            GetSubtreeRootsArg.with {
+                $0.startIndex = 0
+                $0.shieldedProtocol = ShieldedProtocol.sapling
+                $0.maxEntries = 10
+            }
+
+         let saplingRoots = client
+             .getSubtreeRoots(request)
+             .map { response in
+                 let heightVal = UInt32(response.completingBlockHeight)
+                 let height = ZcashBlockHeight(v: heightVal)
+                 let rootHash = response.rootHash
+                 let cmu = try! ZcashSaplingExtractedNoteCommitment(data: Array(rootHash))
+                 let commNode = ZcashSaplingNode.fromCmu(cmu: cmu)
+                 return ZcashCommitmentTreeRoot.fromParts(subtreeEndHeight: height, rootHash: commNode)
+             }
+        var roots: [ZcashCommitmentTreeRoot] = Array()
+        
+        for try await sr in saplingRoots {
+            roots.append(sr)
+        }
+
+        try! walletDb.putSaplingSubtreeRoots(startIndex: 0, roots: roots)
+     }
 }

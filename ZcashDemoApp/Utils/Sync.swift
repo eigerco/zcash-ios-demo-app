@@ -1,18 +1,16 @@
 import LightwalletClientLib
+import Foundation
 import SQLite
 import ZcashLib
 
-/**
- * The only purpose of this object is to contain a way
- * to download all the blocks necessary
- * for a single spending event to work.
- */
-enum Sync {
-    static func downloadBlocks(walletDbPath: String, blocksDirRoot: String) async throws {
+class Sync {
+    static func downloadBlocks() async throws {
         let client = LightWalletClient()
-        let walletDb = try! ZcashWalletDb.forPath(path: walletDbPath, params: Constants.PARAMS)
-
-        // let fsBlockDb = try? ZcashFsBlockDb.forPath(fsblockdbRoot: blocksDirRoot)
+        let dbPath = try! Directories.dataDbURLHelper()
+        let walletDb = try! ZcashWalletDb.forPath(path: dbPath.path, params: Constants.PARAMS)
+        let blocksDirRoot = try! Directories.documentsDirectoryHelper()
+        
+        try! await client.updateSaplingRoots(walletDb: walletDb)
 
         let latestHeight: UInt64 = try! await client.getLatestBlock().height
 
@@ -30,19 +28,18 @@ enum Sync {
 
         var blocksIter = client.getBlockRange(range: fetchingRange).makeAsyncIterator()
 
-//        let repo = BlocksRepo.new(File(blocksDirRoot))
-
-        while let j = try! await blocksIter.next() {
-            // repo.write(fsBlockDb, latestBlocks.map { it })
+        while let j: CompactBlock = try! await blocksIter.next() {
+            BlocksRepo.write(fsBlocksDbRoot: blocksDirRoot, cbs: [j])
+            
             for l in j.vtx {
                 try? await fetchTransactionsForBlock(walletDb: walletDb, tx: l)
             }
         }
-
+        
         try! scanCachedBlocks(
             params: Constants.PARAMS,
-            fsblockdbRoot: blocksDirRoot,
-            dbDataPath: walletDbPath,
+            fsblockdbRoot: blocksDirRoot.path,
+            dbDataPath: dbPath.path,
             height: ZcashBlockHeight(v: UInt32(rangeStart)),
             limit: UInt32(Constants.MAX_BLOCKS_TO_SCAN)
         )
@@ -50,7 +47,7 @@ enum Sync {
 
     private static func fetchTransactionsForBlock(walletDb: ZcashWalletDb, tx: CompactTx) async throws {
         let client = LightWalletClient()
-        let response = try? await client.getTransaction(txId: tx.hash)
+        let response = try? await client.getTransaction(txHash: tx.hash)
         let txData = response?.data.map { UInt8($0) }
 
         let ztx = try? ZcashTransaction.fromBytes(data: txData!, consensusBranchId: ZcashBranchId.sapling)
